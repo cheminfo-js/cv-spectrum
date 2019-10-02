@@ -9,7 +9,7 @@
     "src"
   ],
   "scripts": {
-    "build": "rollup -c && cheminfo build --root IRSpectrum --no-uglify",
+    "build": "rollup -c && cheminfo build --root CVSpectrum --no-uglify",
     "build-doc": "cheminfo doc",
     "eslint": "eslint src",
     "eslint-fix": "npm run eslint -- --fix",

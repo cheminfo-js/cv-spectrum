@@ -1,56 +1,39 @@
-# ir-spectrum
+# cv-curve
 
 [![NPM version][npm-image]][npm-url]
-[![build status][travis-image]][travis-url]
 [![Test coverage][codecov-image]][codecov-url]
 [![npm download][download-image]][download-url]
 
-.
-
 ## Installation
 
-`$ npm install --save ir-spectrum`
+`$ npm install --save cv-curve`
 
 ## Usage
 
 ```js
-import IRSpectrum from 'ir-spectrum';
+import CVCurve from 'cv-curve';
 
-let spectrum = IRSpectrum.fromJcamp(jcamp);
-
-// let spectrum = IRSpectrum.fromText(jcamp);
-
-spectrum.setPeaks([]);
-
-// if optimize is true, peak picking will find the best peak close to wavelength
-spectrum.peakPicking(wavelength, { range: 0, optimize: true });
-console.log(spectrum.peaks());
-
-spectrum.autoPeakPicking({
-  fromWavelength: 1500,
-  toWavelength: 4000,
-  noiseLvel: 0.01
-});
-
-// you may selecdt how you would like to retrieve the data
-// there are 3 modes: ABSORBANCE, TRANSMITTANCE or PERCENT_TRANSMITTANCE
-// those methods are very practical in coordination with www.jsgraph.org
-spectrum.setMode(IRSpectrum.ABSORBANCE);
-let annotations = spectrum.getAnnotations();
-let data = spectrum.getData();
+let analysis = CVCurve.fromJcamp(jcamp);
 ```
 
-## [API Documentation](https://cheminfo.github.io/ir-spectrum/)
+When loading an CVCurve from Jcamp we will systematically add 2 new variables:
+
+- a: containing the absorbance
+- t: containing the percent transmittance
+
+In order to calculate those 2 variables we will check the Y label. If it contains
+transmittance we calculate absorbance, if it contains absorbance we calculate transmittance.
+For transmittance we also check for the presence of a '%' sign.:w
+
+## [API Documentation](https://cheminfo.github.io/cv-curve/)
 
 ## License
 
 [MIT](./LICENSE)
 
-[npm-image]: https://img.shields.io/npm/v/ir-spectrum.svg?style=flat-square
-[npm-url]: https://www.npmjs.com/package/ir-spectrum
-[travis-image]: https://img.shields.io/travis/cheminfo/ir-spectrum/master.svg?style=flat-square
-[travis-url]: https://travis-ci.org/cheminfo/ir-spectrum
-[codecov-image]: https://img.shields.io/codecov/c/github/cheminfo/ir-spectrum.svg?style=flat-square
-[codecov-url]: https://codecov.io/gh/cheminfo/ir-spectrum
-[download-image]: https://img.shields.io/npm/dm/ir-spectrum.svg?style=flat-square
-[download-url]: https://www.npmjs.com/package/ir-spectrum
+[npm-image]: https://img.shields.io/npm/v/cv-curve.svg?style=flat-square
+[npm-url]: https://www.npmjs.com/package/cv-curve
+[codecov-image]: https://img.shields.io/codecov/c/github/cheminfo/cv-curve.svg?style=flat-square
+[codecov-url]: https://codecov.io/gh/cheminfo/cv-curve
+[download-image]: https://img.shields.io/npm/dm/cv-curve.svg?style=flat-square
+[download-url]: https://www.npmjs.com/package/cv-curve

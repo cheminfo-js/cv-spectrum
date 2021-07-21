@@ -1,6 +1,6 @@
 {
   "name": "cv-curve",
-  "version": "0.2.0",
+  "version": "0.1.0",
   "description": "",
   "main": "lib/index.js",
   "module": "src/index.js",
@@ -51,6 +51,5 @@
   "dependencies": {
     "common-spectrum": "0.38.0"
   },
-  "info": {
-  }
+  "info": {}
 }

@@ -3,5 +3,7 @@ export {
   AnalysesManager,
   toJcamp,
   fromJcamp,
+  JSGraph,
 } from 'common-spectrum';
 
+export * from './references';
